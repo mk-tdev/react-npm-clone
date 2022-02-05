@@ -4,9 +4,12 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import logoIcon from "../assets/images/npm.svg";
 import searchIcon from "../assets/images/search.png";
 import closeIcon from "../assets/images/close.png";
+import PackagesResults from "./PackagesResults";
 
 const NpmPackageSearcher: React.FC = () => {
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchFocused, setSearchFocused] = React.useState<boolean>(false);
+
   const { searchNpmPackages } = useActions();
   const { packages, loading, error } = useTypedSelector(
     (state) => state.packagesReducer
@@ -20,16 +23,21 @@ const NpmPackageSearcher: React.FC = () => {
     setSearchTerm("");
   };
 
+  const onSearchFocus = (): void => setSearchFocused(true);
+  const onSearchBlur = (): void => setSearchFocused(false);
+
   return (
     <div className="npm-package-searcher">
       <div className="search-container">
         <div>
           <img src={logoIcon} alt="npm" />
         </div>
-        <div>
+        <div className={searchFocused ? "active-search" : "inactive-search"}>
           <img src={searchIcon} alt="search" />
 
           <input
+            onFocus={onSearchFocus}
+            onBlur={onSearchBlur}
             value={searchTerm}
             type="text"
             placeholder="Search packages"
@@ -51,11 +59,13 @@ const NpmPackageSearcher: React.FC = () => {
       {error && <h3>{error}</h3>}
       {loading && <h3>{"Loading..."}</h3>}
 
-      <div className="result-container">
-        {!loading &&
-          packages &&
-          packages.map((pack) => <div key={pack}>{pack}</div>)}
-      </div>
+      {!loading && !error && packages && packages.objects && (
+        <PackagesResults
+          searchTerm={searchTerm}
+          packages={packages.objects}
+          totalFound={packages.total}
+        />
+      )}
     </div>
   );
 };

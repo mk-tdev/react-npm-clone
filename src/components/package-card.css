@@ -1,0 +1,92 @@
+.package-card {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid rgb(228 228 233);
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.package-card .left {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.key-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.exact-match {
+  border-radius: 0.1 rem;
+  background-color: #efe7fc;
+  transition: all 0.15s ease-in;
+  margin-left: 25px;
+  letter-spacing: 0.4px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+.pill {
+  border-radius: 0.1 rem;
+  background: rgba(0, 0, 0, 0.05);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.published {
+  display: flex;
+  gap: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.published img {
+  height: 15px;
+}
+
+.measure {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  align-items: center;
+  gap: 10px;
+}
+
+.measure-bar {
+  width: 8rem;
+  height: 3px;
+}
+
+.measure-bar .p {
+  background-color: #29abe2;
+  height: inherit;
+}
+
+.measure-bar .q {
+  background-color: #8956ff;
+  height: inherit;
+}
+
+.measure-bar .m {
+  background-color: #cb3837;
+  height: inherit;
+}

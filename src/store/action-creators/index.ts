@@ -17,7 +17,7 @@ export const searchNpmPackages = (query: string) => {
 
       dispatch({
         type: ActionType.SEARCH_PACKAGES_SUCCESS,
-        payload: response.data.objects.map((item: any) => item.package.name),
+        payload: response.data,
       });
     } catch (error: any) {
       dispatch({

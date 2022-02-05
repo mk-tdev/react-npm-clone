@@ -2,7 +2,7 @@ import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
 export interface PackageState {
-  packages: string[];
+  packages: any | null;
   loading: boolean;
   error: string | null;
 }
