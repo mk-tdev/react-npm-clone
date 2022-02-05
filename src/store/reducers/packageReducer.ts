@@ -2,39 +2,39 @@ import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
 export interface PackageState {
-  packages: any | null;
+  packageDetail: any | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState = {
-  packages: [],
+  packageDetail: [],
   loading: false,
   error: null,
 };
 
 export const reducer = (state: PackageState = initialState, action: Action): PackageState => {
   switch (action.type) {
-    case ActionType.SEARCH_PACKAGES:
+    case ActionType.SEARCH_PACKAGE_DETAIL:
       return {
         ...state,
         loading: true,
         error: null,
-        packages: [],
+        packageDetail: [],
       }
-    case ActionType.SEARCH_PACKAGES_SUCCESS:
+    case ActionType.SEARCH_PACKAGE_DETAIL_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null,
-        packages: action.payload,
+        packageDetail: action.payload,
       }
-    case ActionType.SEARCH_PACKAGES_FAILURE:
+    case ActionType.SEARCH_PACKAGE_DETAIL_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
-        packages: [],
+        packageDetail: [],
       }
     default:
       return { ...state };

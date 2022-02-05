@@ -7,12 +7,14 @@ interface PackageResultsProps {
   searchTerm: string;
   packages: any;
   totalFound: number;
+  onPackageDetailClick: (selectedPackageName: string) => void;
 }
 
 const PackagesResults: React.FC<PackageResultsProps> = ({
   totalFound,
   searchTerm,
   packages,
+  onPackageDetailClick,
 }) => {
   return (
     <div className="packages-container">
@@ -22,7 +24,7 @@ const PackagesResults: React.FC<PackageResultsProps> = ({
       </div>
       <div className="results">
         <div>
-          <p>Sort packages</p>
+          <p>Packages legend</p>
           <div className="sorters">
             <div>Optimal</div>
             <div>Popularity</div>
@@ -38,6 +40,7 @@ const PackagesResults: React.FC<PackageResultsProps> = ({
               searchTerm={searchTerm}
               packageDetail={packageDetail.package}
               score={packageDetail.score}
+              onPackageClick={onPackageDetailClick}
             />
           ))}
         </div>

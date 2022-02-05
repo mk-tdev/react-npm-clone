@@ -2,35 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./package-card.css";
 import AvatarIcon from "../assets/images/avatar.png";
 
-// const packageDetail = {
-//   name: "react",
-//   version: "16.13.1",
-//   keywords: ["react", "component", "library"],
-//   description:
-//     "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
-//   publisher: {
-//     username: "facebook",
-//   },
-// };
-
-// const score = {
-//   detail: {
-//     maintenance: 33,
-//     popularity: 91,
-//     quality: 52,
-//   },
-// };
-
 interface PackageCardProps {
   searchTerm: string;
   packageDetail: any;
   score: any;
+  onPackageClick: (selectedPackageName: string) => void;
 }
 
 const PackageCard: React.FC<PackageCardProps> = ({
   searchTerm,
   packageDetail,
   score,
+  onPackageClick,
 }) => {
   // console.log({ packageDetail });
   // console.log({ score });
@@ -53,7 +36,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
   }, [score]);
 
   return (
-    <div className="package-card">
+    <div className="package-card" onClick={() => onPackageClick(packageDetail.name)}>
       <div className="left">
         <div className="title">
           {packageDetail.name}{" "}
