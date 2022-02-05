@@ -1,7 +1,97 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: white;
+  overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: #ae5701;
+}
 
+.header .header-ribbon {
+  border-width: 8px 0 0;
+  border-top-style: solid;
+  border-image: linear-gradient(139deg, #964f08, #e16230, #bb050b, #2affad) 3;
+}
 
+.header-container {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-container .right-side {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-container .header-text {
+  font-size: 18px;
+  color: #ae5701;
+}
+
+.result-container,
+.npm-package-searcher {
+  width: 100%;
+}
+
+.npm-package-searcher .search-container {
+  padding: 15px;
+  gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.npm-package-searcher .search-container div:nth-child(2) {
+  flex: 1;
+  background: #f2f2f2;
+  display: flex;
+}
+
+.npm-package-searcher .search-container div:nth-child(2) img {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+  padding-left: 1rem;
+}
+
+.close-icon {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+
+.result-container {
+  padding: 15px;
+}
+
+input {
+  background: none;
+  font-size: 16px;
+  letter-spacing: 0px;
+  border: none;
+  outline: unset;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 0;
+  width: 100%;
+}
+
+button {
+  letter-spacing: 0.3px;
+  font-weight: bold;
+  background-color: #231f20;
+  color: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border: 0;
+  cursor: pointer;
+}
