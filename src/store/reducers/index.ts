@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as packagesReducer } from "./packagesReducer";
-import { reducer as packageReducer } from "./packageReducer";
+import { reducer as packageDetailReducer } from "./packageDetailReducer";
 
 const reducers = combineReducers({
   packagesReducer,
-  packageReducer,
+  packageDetailReducer,
 });
 
 export default reducers;

@@ -103,3 +103,10 @@ button {
   border: 0;
   cursor: pointer;
 }
+
+.start-searching {
+  margin: 5rem;
+  font-size: 2rem;
+  text-align: center;
+  color: #964f08;
+}

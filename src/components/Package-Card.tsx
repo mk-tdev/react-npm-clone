@@ -15,8 +15,6 @@ const PackageCard: React.FC<PackageCardProps> = ({
   score,
   onPackageClick,
 }) => {
-  // console.log({ packageDetail });
-  // console.log({ score });
   const [scoreData, setScoreData] = useState(score?.detail);
 
   const calculateScore = (score: any) => {

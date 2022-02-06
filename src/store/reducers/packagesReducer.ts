@@ -37,6 +37,6 @@ export const reducer = (state: PackageState = initialState, action: Action): Pac
         packages: [],
       }
     default:
-      return { ...state };
+      return state;
   }
 }

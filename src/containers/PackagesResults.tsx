@@ -43,6 +43,12 @@ const PackagesResults: React.FC<PackageResultsProps> = ({
               onPackageClick={onPackageDetailClick}
             />
           ))}
+
+          {packages.length === 0 && (
+            <div className="empty-results">
+              Looks like no packages found. Try with different search term.
+            </div>
+          )}
         </div>
       </div>
     </div>

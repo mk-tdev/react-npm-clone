@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+
 import logoIcon from "../assets/images/npm.svg";
 import searchIcon from "../assets/images/search.png";
 import closeIcon from "../assets/images/close.png";
+
 import PackagesResults from "./PackagesResults";
-import PackageDetail from "./PackageDetail";
+import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+
+import PackageData from "./PackageData";
 
 const NpmPackageSearcher: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -15,15 +20,10 @@ const NpmPackageSearcher: React.FC = () => {
   const [showPackageDetail, setShowPackageDetail] =
     React.useState<boolean>(false);
 
-  useEffect(() => {
-    console.log("initiated");
-  });
-
   const { searchNpmPackages } = useActions();
-  const { packages, loading, error } = useTypedSelector((state) => {
-    console.log({ state });
-    return state.packagesReducer;
-  });
+  const { packages, loading, error } = useTypedSelector(
+    (state) => state.packagesReducer
+  );
 
   const onsubmit = (): void => {
     searchNpmPackages(searchTerm);
@@ -36,11 +36,10 @@ const NpmPackageSearcher: React.FC = () => {
 
   const onPackageDetailOut = (): void => {
     setShowPackageDetail(false);
+    setSelectedPackageName("");
   };
 
-  const onClear = (): void => {
-    setSearchTerm("");
-  };
+  const onClear = (): void => setSearchTerm("");
 
   const onSearchFocus = (): void => setSearchFocused(true);
   const onSearchBlur = (): void => setSearchFocused(false);
@@ -75,16 +74,21 @@ const NpmPackageSearcher: React.FC = () => {
         </div>
       </div>
 
-      {error && (
-        <div>
-          <h3>{error}</h3>
+      {!loading && !error && !packages.results && !showPackageDetail && (
+        <div className="start-searching">
+          Start your search for NPM packages...!
         </div>
       )}
-      {loading && (
-        <div>
-          <h3>{"Loading..."}</h3>
-        </div>
+
+      {!loading && !error && selectedPackageName && showPackageDetail && (
+        <PackageData
+          packageName={selectedPackageName}
+          onPackageDetailOut={onPackageDetailOut}
+        />
       )}
+
+      {error && <ErrorMessage message={error} />}
+      {loading && <Loader />}
 
       {!loading &&
         !error &&
@@ -98,10 +102,6 @@ const NpmPackageSearcher: React.FC = () => {
             onPackageDetailClick={onPackageDetailClick}
           />
         )}
-
-      {!loading && !error && selectedPackageName && showPackageDetail && (
-        <PackageDetail packageName={selectedPackageName} />
-      )}
     </div>
   );
 };

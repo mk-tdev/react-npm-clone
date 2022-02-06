@@ -3,9 +3,34 @@ import { Dispatch } from "redux";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
+export const fetchPackageData = (query: string) => {
+
+  const url = `https://api.npms.io/v2/package/${query}`;
+
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.FETCH_PACKAGE,
+    });
+
+    try {
+      const response = await axios.get(url);
+
+      dispatch({
+        type: ActionType.FETCH_PACKAGE_SUCCESS,
+        payload: response.data
+      });
+
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.FETCH_PACKAGE_FAILURE,
+        payload: error.message
+      });
+    }
+  };
+}
+
 export const searchNpmPackages = (query: string) => {
   const url = `https://api.npms.io/v2/search?q=${query}`;
-  // const utl = `https://registry.npmjs.org/-/v1/search?text=${query}&size=100`;
 
   return async (dispatch: Dispatch<Action>) => {
     dispatch({
