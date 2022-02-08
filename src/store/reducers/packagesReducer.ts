@@ -21,22 +21,22 @@ export const reducer = (state: PackageState = initialState, action: Action): Pac
         loading: true,
         error: null,
         packages: [],
-      }
+      };
     case ActionType.SEARCH_PACKAGES_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null,
         packages: action.payload,
-      }
+      };
     case ActionType.SEARCH_PACKAGES_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
         packages: [],
-      }
+      };
     default:
       return state;
   }
-}
+};

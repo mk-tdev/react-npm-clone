@@ -14,15 +14,13 @@ interface Props {
 const PackageData: React.FC<Props> = ({ packageName, onPackageDetailOut }) => {
   const { fetchPackageData } = useActions();
   const { loading, error, packageData } = useTypedSelector(
-    (state) => state.packageDetailReducer
+    (state) => state.packageDetailReducer,
   );
 
   useEffect(() => {
-    console.log("initiated npm test: ", packageName);
     if (packageName) {
       fetchPackageData(packageName);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [packageName]);
 
   return (

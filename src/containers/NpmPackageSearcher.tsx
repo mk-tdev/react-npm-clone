@@ -101,7 +101,7 @@ const NpmPackageSearcher: React.FC = () => {
             totalFound={packages.total}
             onPackageDetailClick={onPackageDetailClick}
           />
-        )}
+      )}
     </div>
   );
 };

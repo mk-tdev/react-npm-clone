@@ -4,7 +4,6 @@ import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
 export const fetchPackageData = (query: string) => {
-
   const url = `https://api.npms.io/v2/package/${query}`;
 
   return async (dispatch: Dispatch<Action>) => {
@@ -17,17 +16,16 @@ export const fetchPackageData = (query: string) => {
 
       dispatch({
         type: ActionType.FETCH_PACKAGE_SUCCESS,
-        payload: response.data
+        payload: response.data,
       });
-
     } catch (error: any) {
       dispatch({
         type: ActionType.FETCH_PACKAGE_FAILURE,
-        payload: error.message
+        payload: error.message,
       });
     }
   };
-}
+};
 
 export const searchNpmPackages = (query: string) => {
   const url = `https://api.npms.io/v2/search?q=${query}`;
@@ -51,10 +49,9 @@ export const searchNpmPackages = (query: string) => {
       });
     }
   };
-}
+};
 
 export const getNpmPackageDetail = (query: string) => {
-
   const url = `https://api.npms.io/v2/package/${query}`;
 
   return async (dispatch: Dispatch<Action>) => {
@@ -76,4 +73,4 @@ export const getNpmPackageDetail = (query: string) => {
       });
     }
   };
-}
+};

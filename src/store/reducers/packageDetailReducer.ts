@@ -22,20 +22,20 @@ export const reducer = (state: PackageState = initialState, action: Action): Pac
         ...state,
         error: null,
         loading: true,
-      }
+      };
     case ActionType.FETCH_PACKAGE_SUCCESS:
       return {
         ...state,
         loading: false,
         packageData: action.payload,
-      }
+      };
     case ActionType.FETCH_PACKAGE_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
-      }
+      };
     default:
       return state;
   }
-}
+};
